@@ -1,0 +1,30 @@
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe.config
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.pdb
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csproj.CoreCompileInputs.cache
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.exe
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.pdb
+D:\HE-ARC\ProjetP3\Tests\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csprojResolveAssemblyReference.cache
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe.config
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.pdb
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csprojResolveAssemblyReference.cache
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csproj.CoreCompileInputs.cache
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.exe
+D:\HE-ARC\ProjetP3\Tests\Nouveau dossier\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.pdb
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe.config
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.pdb
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csprojResolveAssemblyReference.cache
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csproj.CoreCompileInputs.cache
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.exe
+D:\HE-ARC\ProjetP3\Git\OthelloGoV3\Projects\C#\TicTacToeRL\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.pdb
+u:\Bachelor\projets\17INF-TA208_AlphaOthello_ThomasLovis\030-Developpement\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.exe
+u:\Bachelor\projets\17INF-TA208_AlphaOthello_ThomasLovis\030-Developpement\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.pdb
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe.config
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.exe
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\bin\Debug\TicTacToeConsoleRL.pdb
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csproj.AssemblyReference.cache
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.csproj.CoreCompileInputs.cache
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.exe
+C:\dev\code\ia\HeArcIAWorkspace\Playground\4_RLearning\TicTacToeConsoleRL\obj\Debug\TicTacToeConsoleRL.pdb
