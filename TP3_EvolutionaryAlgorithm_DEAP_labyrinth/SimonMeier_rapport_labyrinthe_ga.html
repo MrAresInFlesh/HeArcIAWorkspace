@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        TP IA: Labyrinthe - HackMD
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@hackmd/emojify.js@2.1.0/dist/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important;position:relative}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p:last-child{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram,.markdown-body pre.vega{text-align:center;background-color:inherit;border-radius:0;white-space:inherit;overflow:visible}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code,.markdown-body pre.vega>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg,.markdown-body pre.vega>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p:last-child,.markdown-body .alert>ul:last-child{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.figma{display:table;position:relative;width:100%;padding-bottom:56.25%}.figma iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%;border:1px solid #eee}.MJX_Assistive_MathML{display:none}#MathJax_Message{z-index:1000!important}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc.both-mode{margin-left:8px}.ui-toc.both-mode .ui-toc-label{height:40px;padding:10px 4px;border-top-left-radius:0;border-bottom-left-radius:0}.ui-toc-label{background-color:#e6e6e6;border:none;color:#868686;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:20px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child>ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:50%;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-more-info{color:#888;cursor:pointer;vertical-align:middle}.ui-more-info .fa{font-size:16px}.ui-connectedGithub,.ui-published-note{color:#888}.ui-connectedGithub{line-height:23px;white-space:nowrap}.ui-connectedGithub a.file-path{color:#888;text-decoration:none;padding-left:22px}.ui-connectedGithub a.file-path:active,.ui-connectedGithub a.file-path:hover{color:#888;text-decoration:underline}.ui-connectedGithub .fa{font-size:20px}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}.selectable{-webkit-user-select:text;-o-user-select:text;user-select:text}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}.site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .site-ui-font{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em;font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"><h6 id="tags-Intelligence-artificielle" data-id="tags-Intelligence-artificielle"><a class="anchor hidden-xs" href="#tags-Intelligence-artificielle" title="tags-Intelligence-artificielle"><span class="octicon octicon-link"></span></a><span>tags: </span><code>Intelligence artificielle</code></h6><p><img src="https://i.imgur.com/pW7K0Xp.png" alt="" loading="lazy"></p><p><font size="4pt"><sup><em><span>Semestre automne 2021</span></em></sup></font></p><h1 id="TP-IA-Labyrinthe" data-id="TP-IA-Labyrinthe"><a class="anchor hidden-xs" href="#TP-IA-Labyrinthe" title="TP-IA-Labyrinthe"><span class="octicon octicon-link"></span></a><font size="8pt"><b><span>TP IA: Labyrinthe</span></b></font></h1><p><span>Author : Simon Meier</span><br>
+<span>Date :  27.11.2021</span><br>
+<span>Classe : INF 3 dlm-a</span></p><p><font size="5pt"><b><span>Table des matières : </span></b></font></p><hr><p><span class="toc"><ul>
+<li><a href="#TP-IA-Labyrinthe" title="TP IA: Labyrinthe">TP IA: Labyrinthe</a><ul>
+<li><a href="#1-Introduction" title="1. Introduction">1. Introduction</a></li>
+<li><a href="#2-Encodage-d’un-chromosome" title="2. Encodage d’un chromosome">2. Encodage d’un chromosome</a><ul>
+<li><a href="#21-Codification-des-chromosomes" title="2.1 Codification des chromosomes">2.1 Codification des chromosomes</a></li>
+<li><a href="#22-Lecture" title="2.2 Lecture">2.2 Lecture</a></li>
+</ul>
+</li>
+<li><a href="#3-Fonction-de-fitness" title="3. Fonction de fitness">3. Fonction de fitness</a><ul>
+<li><a href="#31-Traitement-du-chromosome-après-son-calcul" title="3.1 Traitement du chromosome après son calcul">3.1 Traitement du chromosome après son calcul</a></li>
+</ul>
+</li>
+<li><a href="#4-Sélection" title="4. Sélection">4. Sélection</a></li>
+<li><a href="#5-Crossover" title="5. Crossover">5. Crossover</a></li>
+<li><a href="#6-Mutation" title="6. Mutation">6. Mutation</a></li>
+<li><a href="#7-Toolbox-et-creator" title="7. Toolbox et creator">7. Toolbox et creator</a></li>
+<li><a href="#8-Main-Loop" title="8 Main Loop">8 Main Loop</a></li>
+</ul>
+</li>
+</ul>
+</span></p><hr><div style="page-break-after: always;"></div><h2 id="1-Introduction" data-id="1-Introduction"><a class="anchor hidden-xs" href="#1-Introduction" title="1-Introduction"><span class="octicon octicon-link"></span></a><span>1. Introduction</span></h2><p><em><span>Les algorithmes génétiques appartiennent à la famille des </span><strong><span>algorithmes évolutionnistes</span></strong><span>. Leur but est d’obtenir une solution approchée à un problème d’optimisation, lorsqu’il n’existe pas de méthode exacte (ou que la solution est inconnue) pour le résoudre en un temps raisonnable.</span></em><span> </span><sub><span>(source: </span><a href="https://fr.wikipedia.org/wiki/Algorithme_g%C3%A9n%C3%A9tique" target="_blank" rel="noopener"><span>Wikipédia - Algorithme génétique</span></a><span>)</span></sub></p><p><span>Durant le cours d’IA, un </span><em><span>travail pratique</span></em><span> (TP) à mener à bien consiste a proposer une résolution d’un labyrinthe de taille variable à l’aide d’un algorithme génétique.</span></p><p><span>Faisant partie de la catégorie des algorithmes d’optimisation, il est conçu pour trouver une potentielle solution et ensuite de l’optimiser, puis retourner peut-être une solution satisfaisante.</span></p><p><span>L’intérêt principal ici est d’apprendre le fonctionnement des algorithmes génétiques et leurs applications.</span></p><div style="page-break-after: always;"></div><h2 id="2-Encodage-d’un-chromosome" data-id="2-Encodage-d’un-chromosome"><a class="anchor hidden-xs" href="#2-Encodage-d’un-chromosome" title="2-Encodage-d’un-chromosome"><span class="octicon octicon-link"></span></a><span>2. Encodage d’un chromosome</span></h2><p><span>Un chromosome correspond en une succession de déplacement dans une des 4 directions possibles dans un labyrinthe; </span><code>up</code><span>, </span><code>down</code><span>, </span><code>left</code><span>, </span><code>right</code><span>.</span></p><p><span>Leurs longueur est défini par l’aire du labyrinthe, soit par la multiplication de la hauteur et largeur du labyrinthe: (</span><code>grid.shape[0] * grid.shape[1]</code><span>).</span></p><h3 id="21-Codification-des-chromosomes" data-id="21-Codification-des-chromosomes"><a class="anchor hidden-xs" href="#21-Codification-des-chromosomes" title="21-Codification-des-chromosomes"><span class="octicon octicon-link"></span></a><span>2.1 Codification des chromosomes</span></h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Direction</span>(<span class="hljs-params">Enum</span>):</span>
+    <span class="hljs-string">"""
+    Possible directions in a grid.
+    """</span>
+    UP = <span class="hljs-number">0</span>
+    RIGHT = <span class="hljs-number">1</span>
+    DOWN = <span class="hljs-number">2</span>
+    LEFT = <span class="hljs-number">3</span>
+</div></div></code></pre><h3 id="22-Lecture" data-id="22-Lecture"><a class="anchor hidden-xs" href="#22-Lecture" title="22-Lecture"><span class="octicon octicon-link"></span></a><span>2.2 Lecture</span></h3><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">_decode</span>(<span class="hljs-params">self, individual</span>):</span>
+        <span class="hljs-string">"""
+        Transform the individual to a list(map()) of directions.
+        """</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(<span class="hljs-keyword">lambda</span> val: Direction(val), individual))
+</div></div></code></pre><div style="page-break-after: always;"></div><h2 id="3-Fonction-de-fitness" data-id="3-Fonction-de-fitness"><a class="anchor hidden-xs" href="#3-Fonction-de-fitness" title="3-Fonction-de-fitness"><span class="octicon octicon-link"></span></a><span>3. Fonction de fitness</span></h2><p><span>La fonction de </span><code>fitness</code><span> est la somme entre:</span></p><ul>
+<li><span>La distance de manhattan entre la dernière coordonnée du chemin et la fin du labyrinthe.</span></li>
+<li><span>la longueur du chemin de l’individu comme malus s’il n’est pas arrivé à la fin.</span></li>
+</ul><p><span>Le score de </span><code>fitness</code><span> doit être le plus bas possible.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">manhattan</span>(<span class="hljs-params">self, depart, destination</span>) -&gt; int:</span>
+        <span class="hljs-string">"""
+        manhattan distance between two points
+        """</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">abs</span>(depart[<span class="hljs-number">0</span>] - destination[<span class="hljs-number">0</span>]) + <span class="hljs-built_in">abs</span>(depart[<span class="hljs-number">1</span>] - destination[<span class="hljs-number">1</span>])
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">fitness</span>(<span class="hljs-params">self, individual</span>) -&gt; tuple:</span>
+        <span class="hljs-string">"""
+        fitness function, will calculate a fitness with 
+        the manhattan distance of the point,
+        the length of the path
+        and a malus if it doesn't reach the end.
+        """</span>
+        path = self.compute_chromosome(individual)
+        <span class="hljs-keyword">return</span> self.manhattan(self.end_cell, path[-<span class="hljs-number">1</span>]) + <span class="hljs-built_in">len</span>(individual),
+</div></div></code></pre><p><strong><code>compute_coordinates()</code></strong><span> :</span></p><p><span>Cette fonction permet le </span><em><span>“déplacement”</span></em><span> dans le labyrinthe en retournant une nouvelle coordonnée en fonction de la direction donnée par les individus.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_coordinates</span>(<span class="hljs-params">self, x, y, direction</span>) -&gt; tuple:</span>
+    <span class="hljs-string">"""
+    get the new x and y from a direction
+    """</span>
+    <span class="hljs-keyword">if</span> direction == Direction.UP:
+        x -= <span class="hljs-number">1</span>
+    <span class="hljs-keyword">elif</span> direction == Direction.RIGHT:
+        y += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">elif</span> direction == Direction.DOWN:
+        x += <span class="hljs-number">1</span>
+    <span class="hljs-keyword">elif</span> direction == Direction.LEFT:
+        y -= <span class="hljs-number">1</span>
+    <span class="hljs-keyword">return</span> x, y
+</div></div></code></pre><p><strong><code>compute_chromosome()</code></strong><span> :</span></p><p><span>Premièrement, </span><code>directions</code><span> permet de récupérer les mouvements qu’un chromosome contient.</span><br>
+<code>x, y</code><span> est un tuple contenant les coordonnées de la fin du labyrinthe.</span><br>
+<span>Ensuite, pour chaque composante de directions, une nouvelle coordonnée </span><code>(x, y)</code><span> est calculée avec la fonction </span><code>compute_coordinates()</code><span>.</span><br>
+<span>Une comparaison est ensuite effectuée; </span><code>if 0 &lt;= new_x &lt; self.width</code><span>, </span><code>and 0 &lt;= new_y &lt; self.height</code><span>, </span><code>and self.grid[new_coordinates] == 0</code><span>, pour vérifier que ce “</span><em><span>déplacement</span></em><span>” ne fait pas sortir de la grille, ni ne passe un mur.</span><br>
+<span>Elles sont ensuite attribuées aux coordonnées déclarées plus haut. Si le résultat correspond à la case de résolution du labyrinthe, alors elle </span><code>return result</code><span>.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">compute_chromosome</span>(<span class="hljs-params">self, individual</span>):</span>
+        <span class="hljs-string">"""
+        Transform an individual 
+        to a list of coordinates 
+        which will be the path.
+        """</span>
+        directions = self._decode(individual)
+        x, y = self.start_cell[<span class="hljs-number">0</span>], self.start_cell[<span class="hljs-number">1</span>]
+        result = [(x, y)]
+
+        <span class="hljs-keyword">for</span> direction <span class="hljs-keyword">in</span> directions:
+            new_x, new_y = self.compute_coordinates(x, y, direction)
+            new_coordinates = (new_x, new_y)
+
+            <span class="hljs-comment"># If it's going out of the grid or against a wall,</span>
+            <span class="hljs-comment"># make it not moving.</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= new_x &lt; self.width \
+                <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= new_y &lt; self.height \
+                    <span class="hljs-keyword">and</span> self.grid[new_coordinates] == <span class="hljs-number">0</span>:
+                result.append(new_coordinates)
+                x = new_x
+                y = new_y
+
+            <span class="hljs-comment"># if at the end cut the chromosom</span>
+            <span class="hljs-keyword">if</span> (x, y) == self.end_cell:
+                <span class="hljs-keyword">return</span> result
+
+        <span class="hljs-keyword">return</span> result
+</div></div></code></pre><div style="page-break-after: always;"></div><h3 id="31-Traitement-du-chromosome-après-son-calcul" data-id="31-Traitement-du-chromosome-après-son-calcul"><a class="anchor hidden-xs" href="#31-Traitement-du-chromosome-après-son-calcul" title="31-Traitement-du-chromosome-après-son-calcul"><span class="octicon octicon-link"></span></a><span>3.1 Traitement du chromosome après son calcul</span></h3><p><span>La fonction </span><code>upgrade_chromosome(self, individual)</code><span> permet de tamiser les composantes des individus.</span></p><ul>
+<li><span>Pour chaque coordonnée reçue dans </span><code>directions</code><span>, si elle est possible, est ajoutée au chemin.</span></li>
+<li><span>Dans le cas contraire;</span>
+<ul>
+<li><span>Utilisation d’un nombre aléatoire entre [0, 1] pour donner une direction aléatoire à l’individu.</span></li>
+<li><span>Sinon l’individu prend la direction qui le fera aller le plus proche de la sortie du labyrinthe avec la fonction </span><code>try_better_path()</code></li>
+<li><span>Finalement, vérification que la nouvelle coordonnée soit valide.</span></li>
+</ul>
+</li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">upgrade_chromosome</span>(<span class="hljs-params">self, individual</span>):</span>
+    <span class="hljs-string">"""
+    When a chromosome goes through a place it already went
+    or went against a wall, this function will purify the 
+    chromosome from those impurities.
+    """</span>
+    directions = self._decode(individual)
+    x, y = self.start_cell[<span class="hljs-number">0</span>], self.start_cell[<span class="hljs-number">1</span>]
+    path = [(x, y)]
+
+    <span class="hljs-keyword">for</span> i, direction <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(directions):
+        new_x, new_y = self.compute_coordinates(x, y, direction)
+        new_coordinates = (new_x, new_y)
+        <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= new_x &lt; self.width \
+            <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= new_y &lt; self.height \
+                <span class="hljs-keyword">and</span> self.grid[new_coordinates] == <span class="hljs-number">0</span> \
+                    <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> new_coordinates <span class="hljs-keyword">in</span> path:
+            path.append(new_coordinates)
+            x, y = new_x, new_y
+
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-comment"># Find a new random direction or the closest to the target</span>
+            <span class="hljs-keyword">if</span> random() &lt; self.RPP:
+                individual[i] = randint(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(Direction) - <span class="hljs-number">1</span>)
+            <span class="hljs-keyword">else</span>:
+                individual[i] = self.try_better_path(path[-<span class="hljs-number">1</span>], self.end_cell)
+
+            new_x, new_y = self.compute_coordinates(x, y, Direction(individual[i]))
+            new_coordinates = (new_x, new_y)
+
+            <span class="hljs-comment"># Verify if the new direction is possible</span>
+            <span class="hljs-keyword">if</span> <span class="hljs-number">0</span> &lt;= new_x &lt; self.width \
+                <span class="hljs-keyword">and</span> <span class="hljs-number">0</span> &lt;= new_y &lt; self.height \
+                    <span class="hljs-keyword">and</span> self.grid[new_coordinates] == <span class="hljs-number">0</span> \
+                        <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> new_coordinates <span class="hljs-keyword">in</span> path:
+                path.append(new_coordinates)
+                x, y = new_x, new_y
+
+        <span class="hljs-comment"># If chromosome reaches the end of the labyrinth</span>
+        <span class="hljs-keyword">if</span> (x, y) == self.end_cell:
+            individual = individual[<span class="hljs-number">0</span>:i]
+            <span class="hljs-keyword">return</span>
+</div></div></code></pre><p><strong><code>try_better_path()</code></strong></p><p><span>Tentative de retour de la meilleure direction possible en fonction de la distance à l’arrivée.</span></p><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">try_better_path</span>(<span class="hljs-params">self, position, target</span>) -&gt; Direction:</span>
+    <span class="hljs-string">"""
+    Try to get the best direction for a point.
+    """</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">abs</span>(position[<span class="hljs-number">0</span>] - target[<span class="hljs-number">0</span>]) &gt; <span class="hljs-built_in">abs</span>(position[<span class="hljs-number">1</span>] - target[<span class="hljs-number">1</span>]):
+        <span class="hljs-keyword">if</span> position[<span class="hljs-number">0</span>] &lt; target[<span class="hljs-number">0</span>]:
+            <span class="hljs-keyword">return</span> Direction.DOWN
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> Direction.UP
+    <span class="hljs-keyword">else</span>:
+        <span class="hljs-keyword">if</span> position[<span class="hljs-number">1</span>] &lt; target[<span class="hljs-number">1</span>]:
+            <span class="hljs-keyword">return</span> Direction.RIGHT
+        <span class="hljs-keyword">else</span>:
+            <span class="hljs-keyword">return</span> Direction.LEFT
+</div></div></code></pre><div style="page-break-after: always;"></div><h2 id="4-Sélection" data-id="4-Sélection"><a class="anchor hidden-xs" href="#4-Sélection" title="4-Sélection"><span class="octicon octicon-link"></span></a><span>4. Sélection</span></h2><p><span>La diversité de la population permet de mesurer le “niveau de convergence”.</span></p><p><span>Si cette dernière est faible, la probabilité de converger vers un minima local sera plus grande, ce qui n’est pas voulu; un minima local induit que la population est prisonnière d’elle-même. Dans le cas présent, elle est difficile à éviter.</span></p><h2 id="5-Crossover" data-id="5-Crossover"><a class="anchor hidden-xs" href="#5-Crossover" title="5-Crossover"><span class="octicon octicon-link"></span></a><span>5. Crossover</span></h2><p><span>Un cross-over sert principalement à induire de la diversité. Il paraît contre-productif d’utiliser ce genre de concept sur la problématique puisque le moindre changement dans un des gènes peut totalement détruire la qualité d’un chemin.</span></p><p><span>En revanche, comme nous sommes face à de nombreux </span><em><span>minima</span></em><span> locaux, il est déterminant de garder un </span><em><span>pool</span></em><span> de gène varié qui peut mener à la bonne solution.</span></p><p><span>Voir la section </span><strong><span>[7] - Toolbox et </span><code>creator</code></strong><span> pour plus de détails sur les choix des fonctions de cross-over.</span></p><div style="page-break-after: always;"></div><h2 id="6-Mutation" data-id="6-Mutation"><a class="anchor hidden-xs" href="#6-Mutation" title="6-Mutation"><span class="octicon octicon-link"></span></a><span>6. Mutation</span></h2><p><span>Tout comme le cross-over, permet d’ajouter de la diversité aux individus. La mutation permet à un gène, au sein d’un chromosome, d’être substitué à un autre de façon aléatoire.</span><br>
+<span>Un taux de mutation est défini pour changer les population.</span><br>
+<span>Il est nécessaire de choisir pour ce taux une valeur relativement faible, de manière à ne pas tomber dans une recherche aléatoire et à conserver le principe de </span><em><span>sélection</span></em><span> et d’</span><em><span>évolution</span></em><span>.</span><br>
+<span>Elle sert à éviter une convergence prématurée de l’algorithme. Par exemple, lors d’une recherche d’extremum, la mutation sert à éviter la convergence vers un extremum local.</span><br>
+<span>Voir la section </span><strong><span>[7] - Toolbox et </span><code>creator</code></strong><span> pour plus de détails sur les choix des fonctions de mutations.</span></p><div style="page-break-after: always;"></div><h2 id="7-Toolbox-et-creator" data-id="7-Toolbox-et-creator"><a class="anchor hidden-xs" href="#7-Toolbox-et-creator" title="7-Toolbox-et-creator"><span class="octicon octicon-link"></span></a><span>7. Toolbox et </span><code>creator</code></h2><p><span>Le </span><em><span>package</span></em><span> </span><code>DEAP</code><span> contient des outils pour travailer sur des population et les faire évoluer. Il faut initialiser un </span><code>creator</code><span> et une </span><code>toolbox</code><span>. La </span><code>toolbox</code><span> permet d’enregistrer des méthodes avec des paramètre par défaut sans changer la </span><em><span>signature de la méthode</span></em><span>, puis être rappelée plus tard, ce qui est très pratique.</span></p><p><strong><code>creator</code></strong><span>:</span></p><ul>
+<li><code>FitnessMin</code><span> définit la manière dont le </span><code>fitness</code><span> des individus est traité. </span><code>weights</code><span> donne la priorité des éléments du tuple fitness associé aux individus. Dans ce cas </span><code>weights=(-1.0,)</code><span> signifie qu’il faut minimiser toutes les valeurs.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">creator.create(<span class="hljs-string">"FitnessMin"</span>, base.Fitness, weights=(-<span class="hljs-number">1.0</span>,))
+</div></div></code></pre><ul>
+<li><code>Individual</code><span> définit le type de structure de données dont les individus sont issus. Il faut lui indiquer la manière dont le </span><code>fitness</code><span> est calculé. Dans le cas présent, le choix s’est porté sur une </span><code>list</code><span> et le </span><code>fitness</code><span> est calculé avec la méthode </span><code>FitnessMin</code><span> créée au préalable.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">creator.create(<span class="hljs-string">"Individual"</span>, <span class="hljs-built_in">list</span>, fitness=creator.FitnessMin)
+</div></div></code></pre><p><strong><code>toolbox</code></strong><span>:</span></p><ul>
+<li><code>fitness</code><span>et</span><code>evaluate</code><span> correspondent aux méthodes </span><code>fitness</code><span> et </span><code>evaluate_population</code><span> codées. Elles sont ajoutées dans la </span><code>toolbox</code><span>.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"fitness"</span>, self.fitness)
+self.toolbox.register(<span class="hljs-string">"evaluate"</span>, self.evaluate_population)
+</div></div></code></pre><ul>
+<li><code>init_gene</code><span> défini la manière dont est construit un gène, dans ce cas un nombre aléatoire entre 0 et 3 indiquant une direction.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"init_gene"</span>, randint, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>)
+</div></div></code></pre><div style="page-break-after: always;"></div><ul>
+<li><code>mate</code><span> indique la manière dont les individus se ‘reproduisent’. Parmi toutes les méthodes de cross-over, </span><code>cxOnePoint</code><span> et </span><code>cxTwoPoint</code><span> ont été testé. Il est difficile de dire l’impact exact de ces méthodes sur les solutions, la méthode </span><code>cxTwoPoint</code><span> a été choisie en fonction de la documentation: </span><a href="https://deap.readthedocs.io/en/master/api/tools.html#deap.tools.cxTwoPoint" target="_blank" rel="noopener"><span>source</span></a><span>, car les deux individus gardent leur longueur originelle, ce qui n’est pas le cas avec </span><code>cxOnePoint</code><span>.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"mate"</span>, tools.cxTwoPoint)
+</div></div></code></pre><ul>
+<li><code>mutate</code><span> indique la manière dont les individus mutent. Deux méthodes ont été testés:</span>
+<ul>
+<li><code>mutUniformInt</code><span> avec </span><code>low=0</code><span>, </span><code>up=3</code><span> et </span><code>indpb=MUTATION_PROBABILITY</code><span>, mute un individu en remplaçant ses attributs avec une valeur uniforme entre </span><code>low</code><span> et </span><code>up</code><span>.</span></li>
+<li><code>mutShuffleIndexes</code><span>, mélange les attributs d’un individu et retourne l’individu muté.</span></li>
+<li><span>la méthode </span><code>mutShuffleIndexes</code><span> est celle retenue car les composantes des chemins des individus changent au fur et à mesure, ce ne sont pas seulement des directions, et donc il est moins intéressant de muter sur un interval. Le paramètre </span><code>indpb</code><span> correspond à la probabilité indépendante pour chaque instruction d’être changée de place.</span></li>
+</ul>
+</li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"mutate"</span>, tools.mutShuffleIndexes, indpb=MUTATION_PROBABILITY)
+</div></div></code></pre><div style="page-break-after: always;"></div><ul>
+<li><code>select</code><span> défini la manière dont les individus sont sélectionnés. Dans le cas présent, la méthode </span><code>selTournament</code><span> est celle retenue puisqu’elle permet de minimiser la fitness en choisissant des individus aléatoirement et en confrontant leur fitness.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"select"</span>, tools.selTournament)
+</div></div></code></pre><ul>
+<li><code>init_individual</code><span> indique la manière de créer un individu et la longueur de chaque chromosome, dans ce cas la méthode </span><code>init_gene</code><span> est utilisé un nombre de fois égale à la longueur d’un chromosome, soit ici l’aire du labyrinthe.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"init_individual"</span>, tools.initRepeat, creator.Individual, self.toolbox.init_gene, self.chromosome_length)
+</div></div></code></pre><ul>
+<li><code>init_population</code><span> défini la manière dont la population est crée, dans ce cas une </span><code>list</code><span> est remplie avec des éléments défini par </span><code>init_individual</code><span>.</span></li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span></div><div class="code">self.toolbox.register(<span class="hljs-string">"init_population"</span>, tools.initRepeat, <span class="hljs-built_in">list</span>, self.toolbox.init_individual)
+</div></div></code></pre><div style="page-break-after: always;"></div><h2 id="8-Main-Loop" data-id="8-Main-Loop"><a class="anchor hidden-xs" href="#8-Main-Loop" title="8-Main-Loop"><span class="octicon octicon-link"></span></a><span>8 Main Loop</span></h2><p><span>Dans la </span><code>main loop</code><span>, exceptés les initialisations des différents outils, les opérations principales sont les suivantes:</span></p><ul>
+<li>
+<ol>
+<li><span>Select:</span></li>
+</ol>
+<ul>
+<li><span>Séléctionner les meilleurs individus de la population et les mettre dans </span><code>offsprings</code><span>.</span></li>
+</ul>
+</li>
+<li>
+<ol start="2">
+<li><span>Populate:</span></li>
+</ol>
+<ul>
+<li><span>Initialiser et rajouter aux </span><em><span>offsprings</span></em><span> des nouveaux individus.</span></li>
+</ul>
+</li>
+<li>
+<ol start="3">
+<li><span>Appliquer les mutations</span></li>
+</ol>
+<ul>
+<li><span>Pour chaque individu, application d’un cross-over et d’une mutation avec une certaine probabilité.</span></li>
+</ul>
+</li>
+<li>
+<ol start="4">
+<li><span>Evaluer:</span></li>
+</ol>
+<ul>
+<li><span>Evaluation de la population.</span></li>
+</ul>
+</li>
+<li>
+<ol start="5">
+<li><span>Sortir la meilleur solution:</span></li>
+</ol>
+<ul>
+<li><span>attribution à </span><code>best</code><span> de la meilleure solution actuelle, puis comparaison de la solution avant et de la nouvelle </span><code>best</code><span> pour savoir laquelle est la meilleure.</span></li>
+<li><span>si la solution est différente de la précédente, alors mis à jours de la solution la plus ancienne, modification de la constante de mutation et incrémentation de </span><code>steps</code><span>; tentatvie de sortir des minimums locaux.</span></li>
+</ul>
+</li>
+</ul><pre><code class="python hljs"><div class="wrapper"><div class="gutter linenumber"><span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span></div><div class="code">
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run</span>(<span class="hljs-params">self</span>):</span>
+    <span class="hljs-string">"""
+    Genetic algorithm to find the solution.
+    """</span>
+    start_time = inter_time = time.time()
+
+    self.toolbox_init()
+
+    steps = <span class="hljs-number">0</span>
+
+    population = self.toolbox.init_population(n=POPULATION_SIZE)
+
+    <span class="hljs-keyword">if</span> self.width &gt;= <span class="hljs-number">30</span>:
+        self.CXP = <span class="hljs-number">0.04</span>
+        self.MUP = <span class="hljs-number">0.40</span>
+        self.RPP = <span class="hljs-number">0.5</span>
+
+    print(<span class="hljs-string">f"CXP : <span class="hljs-subst">{self.CXP}</span>, MUP: <span class="hljs-subst">{self.MUP}</span>, RPP: <span class="hljs-subst">{self.RPP}</span>"</span>)
+
+    self.evaluate_population(population)
+
+    solution = <span class="hljs-literal">None</span>
+
+    <span class="hljs-comment"># -------------------------------------------------------------------------------- #</span>
+    <span class="hljs-comment"># Main Loop</span>
+    <span class="hljs-comment"># -------------------------------------------------------------------------------- #</span>
+
+    <span class="hljs-keyword">while</span> inter_time - start_time &lt; self.time:
+
+        old_solution = solution
+
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-comment"># 1. Selection</span>
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        offsprings = self.toolbox.select(population, <span class="hljs-built_in">len</span>(population), TOURNAMENT_SIZE)
+        offsprings = <span class="hljs-built_in">list</span>(<span class="hljs-built_in">map</span>(self.toolbox.clone, offsprings))
+
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-comment"># 2. Populate</span>
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(population) - <span class="hljs-built_in">len</span>(offsprings)):
+            offsprings.append(self.toolbox.init_individual())
+
+        <span class="hljs-comment"># Apply crossover and mutation on the offspring</span>
+        <span class="hljs-keyword">for</span> offspring1, offspring2 <span class="hljs-keyword">in</span> <span class="hljs-built_in">zip</span>(offsprings[::<span class="hljs-number">2</span>], offsprings[<span class="hljs-number">1</span>::<span class="hljs-number">2</span>]):
+            <span class="hljs-keyword">if</span> random() &lt; self.CXP:
+                self.toolbox.mate(offspring1, offspring2)
+
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-comment"># 3. Applying mutations and upgrade on children</span>
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-keyword">for</span> offspring <span class="hljs-keyword">in</span> offsprings:
+            <span class="hljs-comment"># add a new component</span>
+            <span class="hljs-keyword">if</span> random() &lt; self.MUP:
+                self.toolbox.mutate(offspring)
+            self.upgrade_chromosome(offspring)
+
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-comment"># 4. Evaluate population</span>
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+
+        self.evaluate_population(offsprings)
+
+        population = offsprings
+
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+        <span class="hljs-comment"># 5. Search for the best solution in all the offsprings</span>
+        <span class="hljs-comment"># ---------------------------------------------------------------------------- #</span>
+
+        best = self.find_best(offsprings)
+
+        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> solution <span class="hljs-keyword">or</span> best.fitness.values[<span class="hljs-number">0</span>] &lt; solution.fitness.values[<span class="hljs-number">0</span>]:
+            solution = best
+
+        <span class="hljs-keyword">if</span> old_solution != solution:
+            old_solution = solution
+            self.MUP = <span class="hljs-number">0.02</span>
+            <span class="hljs-comment"># print(f"The best solution was find after {time.time() - start_time:.2f} second(s) and has a chromosome's length of {len(solution)} number")</span>
+        <span class="hljs-keyword">else</span>:
+            steps += <span class="hljs-number">1</span>
+
+        <span class="hljs-comment"># Add a gene to all individual and increase the probability of mutation </span>
+        <span class="hljs-comment"># if there is 5 or more genertation without new best solution</span>
+        <span class="hljs-keyword">if</span> steps &gt;= <span class="hljs-number">3</span> :
+            <span class="hljs-keyword">if</span> self.MUP &lt; <span class="hljs-number">0.2</span>:
+                self.MUP *= <span class="hljs-number">1.5</span>
+            [ind.insert(randint(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(ind)-<span class="hljs-number">1</span>), randint(<span class="hljs-number">0</span>,<span class="hljs-number">3</span>)) <span class="hljs-keyword">for</span> ind <span class="hljs-keyword">in</span> population ]
+
+        inter_time = time.time()
+
+    <span class="hljs-keyword">return</span> self.compute_chromosome(solution)
+</div></div></code></pre></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#TP-IA-Labyrinthe" title="TP IA: Labyrinthe">TP IA: Labyrinthe</a><ul class="nav">
+<li><a href="#1-Introduction" title="1. Introduction">1. Introduction</a></li>
+<li><a href="#2-Encodage-d’un-chromosome" title="2. Encodage d’un chromosome">2. Encodage d’un chromosome</a><ul class="nav">
+<li><a href="#21-Codification-des-chromosomes" title="2.1 Codification des chromosomes">2.1 Codification des chromosomes</a></li>
+<li><a href="#22-Lecture" title="2.2 Lecture">2.2 Lecture</a></li>
+</ul>
+</li>
+<li><a href="#3-Fonction-de-fitness" title="3. Fonction de fitness">3. Fonction de fitness</a><ul class="nav">
+<li><a href="#31-Traitement-du-chromosome-après-son-calcul" title="3.1 Traitement du chromosome après son calcul">3.1 Traitement du chromosome après son calcul</a></li>
+</ul>
+</li>
+<li><a href="#4-Sélection" title="4. Sélection">4. Sélection</a></li>
+<li><a href="#5-Crossover" title="5. Crossover">5. Crossover</a></li>
+<li><a href="#6-Mutation" title="6. Mutation">6. Mutation</a></li>
+<li><a href="#7-Toolbox-et-creator" title="7. Toolbox et creator">7. Toolbox et creator</a></li>
+<li><a href="#8-Main-Loop" title="8 Main Loop">8 Main Loop</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" lang="en" null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#TP-IA-Labyrinthe" title="TP IA: Labyrinthe">TP IA: Labyrinthe</a><ul class="nav">
+<li><a href="#1-Introduction" title="1. Introduction">1. Introduction</a></li>
+<li><a href="#2-Encodage-d’un-chromosome" title="2. Encodage d’un chromosome">2. Encodage d’un chromosome</a><ul class="nav">
+<li><a href="#21-Codification-des-chromosomes" title="2.1 Codification des chromosomes">2.1 Codification des chromosomes</a></li>
+<li><a href="#22-Lecture" title="2.2 Lecture">2.2 Lecture</a></li>
+</ul>
+</li>
+<li><a href="#3-Fonction-de-fitness" title="3. Fonction de fitness">3. Fonction de fitness</a><ul class="nav">
+<li><a href="#31-Traitement-du-chromosome-après-son-calcul" title="3.1 Traitement du chromosome après son calcul">3.1 Traitement du chromosome après son calcul</a></li>
+</ul>
+</li>
+<li><a href="#4-Sélection" title="4. Sélection">4. Sélection</a></li>
+<li><a href="#5-Crossover" title="5. Crossover">5. Crossover</a></li>
+<li><a href="#6-Mutation" title="6. Mutation">6. Mutation</a></li>
+<li><a href="#7-Toolbox-et-creator" title="7. Toolbox et creator">7. Toolbox et creator</a></li>
+<li><a href="#8-Main-Loop" title="8 Main Loop">8 Main Loop</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">Expand all</a><a class="back-to-top" href="#">Back to top</a><a class="go-to-bottom" href="#">Go to bottom</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
